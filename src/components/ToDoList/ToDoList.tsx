@@ -13,7 +13,7 @@ let dummyData = [
 function ToDoList() {
   const [todos, setTodos] = useState(
     JSON.parse(
-      localStorage.getItem("todos") || JSON.stringify(dummyData) || "[]"
+      localStorage.getItem("todos") || JSON.stringify(dummyData)
     )
   );
   const [text, setText] = useState("");
