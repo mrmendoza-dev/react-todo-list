@@ -1,0 +1,46 @@
+.ToDoList {
+  height: 400px;
+  font-size: 1rem;
+  padding: 1em;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.ToDoList li {
+  list-style-type: none;
+}
+.ToDoList ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ToDoList button {
+  cursor: pointer;
+}
+.ToDoList input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: inherit;
+}
+
+.ToDoList .todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.ToDoList .todo-add {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.ToDoList .todo-row {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
