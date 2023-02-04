@@ -53,7 +53,7 @@ function ToDoList() {
     setTodos(todos.filter((todo: any) => todo.id !== id));
   };
 
-  const handleEdit = (id: any, newText: any) => {
+  const handleEdit = (id: any, newText: string) => {
     setTodos(
       todos.map((todo: any) => {
         if (todo.id === id) {
@@ -64,6 +64,23 @@ function ToDoList() {
     );
   };
 
+    const onDragStart = (e: any, index: number) => {
+      e.dataTransfer.setData("index", index);
+    };
+
+    const onDragOver = (e: any) => {
+      e.preventDefault();
+    };
+
+    const onDrop = (e: any, targetIndex: number) => {
+      const sourceIndex = e.dataTransfer.getData("index");
+      const newList = [...todos];
+      const [removed] = newList.splice(sourceIndex, 1);
+      newList.splice(targetIndex, 0, removed);
+      setTodos(newList);
+    };
+
+
   return (
     <form className="ToDoList" onSubmit={handleAdd}>
       <div className="todo-add todo-row">
@@ -73,16 +90,26 @@ function ToDoList() {
           onChange={(e) => setText(e.target.value)}
           ref={inputRef}
         />
-        <button onClick={handleAdd}>
+        <button className="btn-row" onClick={handleAdd}>
           <i className="fa-solid fa-plus"></i>
         </button>
       </div>
       <ul className="todo-list">
-        {todos.map((todo: any) => (
-          <li key={todo.id} className="todo-row">
-            <span onClick={() => handleFavorite(todo.id)}>
+        {todos.map((todo: any, index: any) => (
+          <li
+            key={todo.id}
+            className="todo-row"
+            draggable
+            onDragStart={(e) => onDragStart(e, index)}
+            onDragOver={(e) => onDragOver(e)}
+            onDrop={(e) => onDrop(e, index)}
+          >
+            <span
+              className="btn-favorite"
+              onClick={() => handleFavorite(todo.id)}
+            >
               {todo.favorite ? (
-                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star favorite"></i>
               ) : (
                 <i className="fa-regular fa-star"></i>
               )}
@@ -92,9 +119,20 @@ function ToDoList() {
               value={todo.text}
               onChange={(e) => handleEdit(todo.id, e.target.value)}
             />
-            <button onClick={() => handleDelete(todo.id)}>
+
+            {/* <button
+              className="btn-row btn-edit"
+              onClick={() => handleDelete(todo.id)}
+            >
+              <i className="fa-solid fa-pen-to-square"></i>
+            </button> */}
+            <button
+              className="btn-row btn-trash"
+              onClick={() => handleDelete(todo.id)}
+            >
               <i className="fa-solid fa-trash"></i>
             </button>
+
           </li>
         ))}
       </ul>
@@ -125,7 +163,7 @@ function EditableText(props: any) {
 
   function handleChange(event: any) {
     setText(event.target.value);
-    props.setValue(event.target.value);
+    props.setValue();
   }
 
   if (isEditing) {
