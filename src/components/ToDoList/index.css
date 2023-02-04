@@ -8,11 +8,9 @@
   color: var(--clr-font);
 
   --clr-font: #eeeeee;
-    --clr-main: #263238 ;
-  --clr-darker: #37474F ;
-    --clr-accent: #27556c ;
-
-
+  --clr-main: #263238;
+  --clr-darker: #37474f;
+  --clr-accent: #27556c;
 }
 
 .ToDoList li {
@@ -33,7 +31,6 @@
   background-color: inherit;
 }
 
-
 .ToDoList .todo-list {
   display: flex;
   flex-direction: column;
@@ -45,9 +42,8 @@
   display: flex;
   justify-content: center;
 }
-.ToDoList .todo-add input{
+.ToDoList .todo-add input {
   padding: 1em;
-  
 }
 .ToDoList .todo-row {
   border: 1px solid var(--clr-darker);
@@ -57,36 +53,33 @@
   justify-content: center;
   align-items: center;
   height: 30px;
-      cursor: grab;
-
+  cursor: grab;
 }
 
 .ToDoList .btn-favorite {
-    border: none;
-    background-color: inherit;
-    padding: 0 .4em;
-    cursor: pointer;
+  border: none;
+  background-color: inherit;
+  padding: 0 0.4em;
+  cursor: pointer;
 }
 
 .ToDoList .favorite {
-    color: #FFC83D;
+  color: #ffc83d;
 }
 .ToDoList button {
-    border: none;
-    background-color: var(--clr-accent);
-    padding: 0em .5em;
+  border: none;
+  background-color: var(--clr-accent);
+  padding: 0em 0.5em;
 }
 
-
-
 .ToDoList .btn-row {
-    height: 100%;
-    transition: all 200ms;
+  height: 100%;
+  transition: all 200ms;
 }
 
 .ToDoList .btn-trash:hover {
-    background-color: red;
+  background-color: red;
 }
 .ToDoList .btn-edit:hover {
-    background-color: purple;
+  background-color: purple;
 }
