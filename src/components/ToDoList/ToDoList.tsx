@@ -20,10 +20,10 @@ function ToDoList() {
 
   const inputRef: any = useRef(null);
 
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem("todos") || "[]");
-    setTodos(storedTodos);
-  }, []);
+  // useEffect(() => {
+  //   const storedTodos = JSON.parse(localStorage.getItem("todos") || "[]");
+  //   setTodos(storedTodos);
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
