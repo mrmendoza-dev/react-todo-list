@@ -13,17 +13,11 @@ let dummyData = [
 function ToDoList() {
   const [todos, setTodos] = useState(
     JSON.parse(
-      localStorage.getItem("todos") || JSON.stringify(dummyData)
+      localStorage.getItem("todos") || JSON.stringify(dummyData) || "[]"
     )
   );
   const [text, setText] = useState("");
-
   const inputRef: any = useRef(null);
-
-  // useEffect(() => {
-  //   const storedTodos = JSON.parse(localStorage.getItem("todos") || "[]");
-  //   setTodos(storedTodos);
-  // }, []);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
